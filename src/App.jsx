@@ -6,12 +6,10 @@ import MyButton from '@components/Button/Button';
 function App() {
     return (
         <>
-            <MainLayout>
-                <MyHeader />
-                {/* Content
+            <MyHeader />
+            {/* Content
                 <MyFooter /> */}
-                {/* <MyButton /> */}
-            </MainLayout>
+            {/* <MyButton /> */}
         </>
     );
 }
