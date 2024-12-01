@@ -3,6 +3,11 @@
 
 .container {
     @include flex_box_custom(center, center, 0px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba($color: #fff, $alpha: 0.7);
 }
 
 .containerHeader {
