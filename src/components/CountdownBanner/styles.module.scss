@@ -2,11 +2,12 @@
 @import '@styles/variable.module.scss';
 
 .container {
-    background-image: url(../../assets/images/emberton_ii_2.webp);
+    background-image: url(../../assets/images/act2_2.avif);
     height: 409px;
     width: calc(100% / 2);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 50% 20%;
 }
 
 .containerTimer {

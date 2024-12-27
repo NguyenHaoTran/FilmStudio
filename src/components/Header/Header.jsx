@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import BoxIcon from './BoxIcon/BoxIcon';
 import { dataBoxIcon, dataMenu } from './BoxIcon/constants';
 import styles from './styles.module.scss';
@@ -8,30 +9,54 @@ import heartIcon from '@icons/svgs/heartIcon.svg';
 import cartIcon from '@icons/svgs/cartIcon.svg';
 
 function MyHeader() {
+    const [isVisible, setIsVisible] = useState(true);
     const {
         containerBoxIcon,
         containerMenu,
         containerHeader,
         containerBox,
-        container
+        container,
+        hidden
     } = styles;
+
+    useEffect(() => {
+        let lastScrollTop = 0;
+
+        const handleScroll = () => {
+            const currentScroll =
+                window.scrollY || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                // Cuộn xuống, ẩn header
+                setIsVisible(false);
+            } else {
+                // Cuộn lên, hiện header
+                setIsVisible(true);
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Dọn dẹp khi component unmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <div className={container}>
+        <div className={`${container} ${isVisible ? '' : hidden}`}>
             <div className={containerHeader}>
                 <div className={containerBox}>
                     <div className={containerBoxIcon}>
-                        {dataBoxIcon.map((item) => {
-                            return (
-                                <BoxIcon type={item.type} href={item.href} />
-                            );
-                        })}
+                        {dataBoxIcon.map((item) => (
+                            <BoxIcon type={item.type} href={item.href} />
+                        ))}
                     </div>
                     <div className={containerMenu}>
-                        {dataMenu.slice(0, 3).map((item) => {
-                            return (
-                                <Menu content={item.content} href={item.href} />
-                            );
-                        })}
+                        {dataMenu.slice(0, 3).map((item) => (
+                            <Menu content={item.content} href={item.href} />
+                        ))}
                     </div>
                 </div>
                 <div>
@@ -46,13 +71,10 @@ function MyHeader() {
                 </div>
                 <div className={containerBox}>
                     <div className={containerMenu}>
-                        {dataMenu.slice(3, 6).map((item) => {
-                            return (
-                                <Menu content={item.content} href={item.href} />
-                            );
-                        })}
+                        {dataMenu.slice(3, 6).map((item) => (
+                            <Menu content={item.content} href={item.href} />
+                        ))}
                     </div>
-                    {/*  */}
                     <div
                         className={containerBoxIcon}
                         style={{ opacity: '0.8' }}
@@ -73,7 +95,7 @@ function MyHeader() {
                             width={22}
                             height={22}
                             src={cartIcon}
-                            alt='cartIcon    '
+                            alt='cartIcon'
                         />
                     </div>
                 </div>
@@ -81,4 +103,5 @@ function MyHeader() {
         </div>
     );
 }
+
 export default MyHeader;
