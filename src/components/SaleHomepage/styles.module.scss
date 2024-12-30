@@ -1,4 +1,21 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
 .container {
+    @include flex_box_custom(space-between, center, 0px);
+    padding: 0 10% 0 10%;
     margin-top: 100px;
+    border-top: 1px solid rgba($color: black, $alpha: 0.1);
+    padding-top: 40px;
+    img {
+        width: 330px;
+        height: 330px;
+        object-fit: cover;
+    }
+    .content {
+        @include flex_box_custom(center, center, 10px);
+
+        flex-direction: column;
+    }
 }
 // 3p38 #8
