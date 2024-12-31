@@ -6,9 +6,6 @@ function SaleHomepage() {
 
     return (
         <div className={container}>
-            <div>
-                <img src='src\assets\images\banner2.avif' alt='' />
-            </div>
             <div className={content}>
                 <h2>Sale Of The Year</h2>
                 <p>
@@ -16,9 +13,6 @@ function SaleHomepage() {
                     one-of-a-kind Emberton III speaker.
                 </p>
                 <Button content={'Read More'} />
-            </div>
-            <div>
-                <img src='src\assets\images\banner4.avif' alt='' />{' '}
             </div>
         </div>
     );

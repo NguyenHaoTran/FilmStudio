@@ -3,20 +3,20 @@
 
 .container {
     @include flex_box_custom(space-between, center, 0px);
-    padding: 0 5% 0 5%;
     margin-top: 100px;
     border-top: 1px solid rgba($color: black, $alpha: 0.1);
     padding-top: 40px;
-    img {
-        width: 330px;
-        height: 330px;
-        object-fit: cover;
-    }
+
     .content {
         @include flex_box_custom(center, center, 10px);
 
+        background-image: url('src/assets/images/banner4.avif');
+        color: white;
         flex-direction: column;
         text-align: center;
+        width: 100%;
+        height: 500px;
+        background-size: cover;
+        background-position: 50% 35%;
     }
 }
-// 3p38 #8

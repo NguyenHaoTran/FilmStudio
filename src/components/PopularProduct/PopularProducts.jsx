@@ -20,7 +20,6 @@ function PopularProduct({ data }) {
                     ))}
                 </div>
             </MainLayout>
-            ;
         </>
     );
 }
