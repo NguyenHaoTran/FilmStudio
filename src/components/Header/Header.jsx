@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import BoxIcon from './BoxIcon/BoxIcon';
 import { dataBoxIcon, dataMenu } from './BoxIcon/constants';
 import styles from './styles.module.scss';
@@ -7,6 +7,7 @@ import Logo from '@icons/images/LogoMarshall.png';
 import reloadIcon from '@icons/svgs/reloadIcon.svg';
 import heartIcon from '@icons/svgs/heartIcon.svg';
 import cartIcon from '@icons/svgs/cartIcon.svg';
+import { SideBarContext } from '../../contexts/SideBarProvider';
 
 function MyHeader() {
     const [isVisible, setIsVisible] = useState(true);
@@ -18,6 +19,10 @@ function MyHeader() {
         container,
         hidden
     } = styles;
+
+    const { isOpen, setIsOpen } = useContext(SideBarContext);
+
+    // console.log(isOpen);
 
     useEffect(() => {
         let lastScrollTop = 0;
@@ -55,7 +60,11 @@ function MyHeader() {
                     </div>
                     <div className={containerMenu}>
                         {dataMenu.slice(0, 3).map((item) => (
-                            <Menu content={item.content} href={item.href} />
+                            <Menu
+                                content={item.content}
+                                href={item.href}
+                                setIsOpen={setIsOpen}
+                            />
                         ))}
                     </div>
                 </div>
