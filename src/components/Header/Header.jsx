@@ -24,6 +24,9 @@ function MyHeader() {
 
     // console.log(isOpen);
 
+    // console.log('isOpen:', isOpen);
+    // console.log('setIsOpen:', setIsOpen);
+
     useEffect(() => {
         let lastScrollTop = 0;
 
@@ -65,6 +68,7 @@ function MyHeader() {
                                 href={item.href}
                                 setIsOpen={setIsOpen}
                             />
+                            // -----!
                         ))}
                     </div>
                 </div>
@@ -81,7 +85,11 @@ function MyHeader() {
                 <div className={containerBox}>
                     <div className={containerMenu}>
                         {dataMenu.slice(3, 6).map((item) => (
-                            <Menu content={item.content} href={item.href} />
+                            <Menu
+                                content={item.content}
+                                href={item.href}
+                                setIsOpen={setIsOpen}
+                            />
                         ))}
                     </div>
                     <div
