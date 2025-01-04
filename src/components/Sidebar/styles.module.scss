@@ -1,3 +1,5 @@
+@import '@styles/mixin.module.scss';
+
 .container {
     position: relative;
     .overlay {
@@ -6,7 +8,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba($color: #000000, $alpha: 0.5);
+        background-color: rgba($color: #000000, $alpha: 0.2);
         z-index: 1001;
 
         transition: all 0.3s ease;
@@ -16,9 +18,36 @@
         position: fixed;
         top: 0;
         right: 0;
-        width: 370px;
-        background-color: #fff;
+        width: 350px;
+        background-color: rgba($color: #fff, $alpha: 0.7);
+        backdrop-filter: blur(15px);
+        box-shadow: -10px 0 45px rgba(0, 0, 0, 0.25);
         z-index: 1002;
         height: 100vh;
+
+        transform: translateX(570px);
+        transition: all 0.3s ease;
+    }
+    .slideSideBar {
+        transform: translateX(0px);
+    }
+    .boxIcon {
+        @include flex_box_custom(center, center, 0px);
+        position: absolute;
+        top: 25px;
+        left: -60px;
+
+        width: 35px;
+        height: 35px;
+        background-color: rgba($color: #fff, $alpha: 0.7);
+        backdrop-filter: blur(15px);
+        border-radius: 20%;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color: #fff, $alpha: 0.9);
+            transition: all 0.3s ease;
+        }
     }
 }
