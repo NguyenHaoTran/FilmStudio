@@ -8,10 +8,10 @@
     left: 0;
     right: 0;
     background-color: rgba($color: #fff, $alpha: 0.7);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 -10px 45px rgba(0, 0, 0, 0.25);
     z-index: 1000;
-    border-bottom: 1px solid rgba($color: #7e7e7e, $alpha: 0.7);
 }
 
 .containerHeader {
