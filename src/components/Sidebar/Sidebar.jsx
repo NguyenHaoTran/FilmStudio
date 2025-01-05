@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import styles from './styles.module.scss';
 import { SideBarContext } from '../../contexts/SidebarProvider';
 import classNames from 'classnames';
+import Login from '../ContentSideBar/Login/Login';
 // icons
 import { IoMdClose } from 'react-icons/io';
 
@@ -29,7 +30,7 @@ function Sidebar() {
                         <IoMdClose />
                     </div>
                 )}
-                sideBar
+                <Login />
             </div>
         </div>
     );
