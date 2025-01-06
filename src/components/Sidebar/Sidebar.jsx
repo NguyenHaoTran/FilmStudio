@@ -5,13 +5,32 @@ import classNames from 'classnames';
 import Login from '../ContentSideBar/Login/Login';
 // icons
 import { IoMdClose } from 'react-icons/io';
+import Compare from '../ContentSideBar/Compare/Compare';
 
 function Sidebar() {
     const { container, overlay, sideBar, slideSideBar, boxIcon } = styles;
-    const { isOpen, setIsOpen } = useContext(SideBarContext);
+    const { isOpen, setIsOpen, type } = useContext(SideBarContext);
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
+    };
+
+    // console.log(type);
+
+    const handleRenderContent = () => {
+        switch (type) {
+            case 'login':
+                return <Login />;
+            case 'compare':
+                return <Compare />;
+            case 'wishlist':
+                return 'wishlist';
+            case 'cart':
+                return 'cart';
+
+            default:
+                return <Login />;
+        }
     };
 
     return (
@@ -30,7 +49,7 @@ function Sidebar() {
                         <IoMdClose />
                     </div>
                 )}
-                <Login />
+                {handleRenderContent()}
             </div>
         </div>
     );

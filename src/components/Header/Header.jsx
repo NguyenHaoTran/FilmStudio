@@ -4,10 +4,11 @@ import { dataBoxIcon, dataMenu } from './BoxIcon/constants';
 import styles from './styles.module.scss';
 import Menu from '@components/Header/Menu/Menu';
 import Logo from '@icons/images/LogoMarshall.png';
-import reloadIcon from '@icons/svgs/reloadIcon.svg';
-import heartIcon from '@icons/svgs/heartIcon.svg';
-import cartIcon from '@icons/svgs/cartIcon.svg';
 import { SideBarContext } from '../../contexts/SideBarProvider';
+// icons
+import { IoReload } from 'react-icons/io5';
+import { CiHeart } from 'react-icons/ci';
+import { CiShoppingCart } from 'react-icons/ci';
 
 function MyHeader() {
     const [isVisible, setIsVisible] = useState(true);
@@ -20,12 +21,11 @@ function MyHeader() {
         hidden
     } = styles;
 
-    const { isOpen, setIsOpen } = useContext(SideBarContext);
-
-    // console.log(isOpen);
-
-    // console.log('isOpen:', isOpen);
-    // console.log('setIsOpen:', setIsOpen);
+    const { setIsOpen, setType } = useContext(SideBarContext);
+    const handleOpenSideBar = (type) => {
+        setIsOpen(true);
+        setType(type);
+    };
 
     useEffect(() => {
         let lastScrollTop = 0;
@@ -96,23 +96,17 @@ function MyHeader() {
                         className={containerBoxIcon}
                         style={{ opacity: '0.8' }}
                     >
-                        <img
-                            width={22}
-                            height={22}
-                            src={reloadIcon}
-                            alt='reloadIcon'
+                        <IoReload
+                            style={{ fontSize: '20px' }}
+                            onClick={() => handleOpenSideBar('compare')}
                         />
-                        <img
-                            width={22}
-                            height={22}
-                            src={heartIcon}
-                            alt='heartIcon'
+                        <CiHeart
+                            style={{ fontSize: '24px' }}
+                            onClick={() => handleOpenSideBar('wishlist')}
                         />
-                        <img
-                            width={22}
-                            height={22}
-                            src={cartIcon}
-                            alt='cartIcon'
+                        <CiShoppingCart
+                            style={{ fontSize: '25px' }}
+                            onClick={() => handleOpenSideBar('cart')}
                         />
                     </div>
                 </div>
