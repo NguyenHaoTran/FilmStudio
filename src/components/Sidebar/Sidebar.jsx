@@ -6,6 +6,7 @@ import Login from '../ContentSideBar/Login/Login';
 // icons
 import { IoMdClose } from 'react-icons/io';
 import Compare from '../ContentSideBar/Compare/Compare';
+import WishList from '../ContentSideBar/WishList/WishList';
 
 function Sidebar() {
     const { container, overlay, sideBar, slideSideBar, boxIcon } = styles;
@@ -24,7 +25,7 @@ function Sidebar() {
             case 'compare':
                 return <Compare />;
             case 'wishlist':
-                return 'wishlist';
+                return <WishList />;
             case 'cart':
                 return 'cart';
 
