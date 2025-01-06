@@ -1,20 +1,13 @@
-import styles from './style.module.scss';
+import styles from './styles.module.scss';
 
-// icon
-import { MdCompare } from 'react-icons/md';
-
-function HeaderSideBar() {
-    const {} = styles;
+function HeaderSideBar({ icon, title }) {
+    const { container } = styles;
     return (
-        <div>
-            <div>
-                <MdCompare />
-                <div>Compare</div>
-            </div>
+        <div className={container}>
+            {icon}
+            <div>{title}</div>
         </div>
     );
 }
 
 export default HeaderSideBar;
-
-// 15:45
