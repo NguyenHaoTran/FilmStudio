@@ -6,7 +6,7 @@ import Button from '../../Button/Button';
 import { CiHeart } from 'react-icons/ci';
 
 function wishlist() {
-    const { container, boxContent } = styles;
+    const { container, boxContent, btnWL } = styles;
     return (
         <div className={container}>
             <div className={boxContent}>
@@ -17,9 +17,9 @@ function wishlist() {
             </div>
 
             <ItemProduct />
-            <div>
+            <div className={btnWL}>
                 <Button content={'VIEW WISHLIST'} />
-                <Button content={'ADD ALL TO CART'} />
+                <Button content={'ADD ALL TO CART'} isPrimary={false} />
             </div>
         </div>
     );
