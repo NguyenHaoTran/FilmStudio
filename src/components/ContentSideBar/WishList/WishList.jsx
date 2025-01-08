@@ -14,9 +14,9 @@ function wishlist() {
                     icon={<CiHeart style={{ fontSize: '30px' }} />}
                     title={'WISHLIST'}
                 />
+                <ItemProduct />
             </div>
 
-            <ItemProduct />
             <div className={btnWL}>
                 <Button content={'VIEW WISHLIST'} />
                 <Button content={'ADD ALL TO CART'} isPrimary={false} />
