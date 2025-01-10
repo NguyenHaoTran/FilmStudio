@@ -1,0 +1,24 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    @include flex_box_custom(space-between, unset, 0px);
+    flex-direction: column;
+
+    padding: 30px 20px 0 20px;
+    height: 95%;
+    .total {
+        @include flex_box_custom(space-between, center, 0px);
+        padding-bottom: 20px;
+    }
+    .btnWL {
+        @include flex_box_custom(center, center, 5px);
+        flex-direction: column;
+        Button {
+            color: white;
+            &:hover {
+                color: black;
+            }
+        }
+    }
+}
