@@ -11,7 +11,7 @@ export const ToastProvider = ({ children }) => {
     return (
         <ToastContext.Provider value={value}>
             {children}
-            <ToastContext />
+            <ToastContainer />
         </ToastContext.Provider>
     );
 };
