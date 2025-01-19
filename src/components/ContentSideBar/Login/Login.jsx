@@ -6,10 +6,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useContext, useState } from 'react';
 import { ToastContext } from '../../../contexts/ToastProvider';
+import { register } from '../../../apis/authService';
 
 function Login() {
     const { container, title, boxRememberMe, lostPw } = styles;
     const [isRegister, setIsRegister] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { toast } = useContext(ToastContext);
 
     const formik = useFormik({
@@ -30,8 +32,27 @@ function Login() {
             )
         }),
         //
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            // console.log(values);
+
+            if (setIsLoading) return;
+
+            if (isRegister) {
+                const { email, password } = values;
+                setIsLoading(true);
+
+                await register({ email, password })
+                    .then((res) => {
+                        // console.log(res);
+                        toast.success(res.data.message);
+                        setIsLoading(false);
+                    })
+                    .catch((err) => {
+                        // console.log(err);
+                        toast.error(err.response.data.message);
+                        setIsLoading(false);
+                    });
+            }
         }
         //
     });
@@ -78,7 +99,13 @@ function Login() {
                 )}
 
                 <Button
-                    content={isRegister ? 'LOGIN' : 'LOGIN'}
+                    content={
+                        isLoading
+                            ? 'LOADING...'
+                            : isRegister
+                            ? 'REGISTER'
+                            : 'LOGIN'
+                    }
                     type='submit'
                     onClick={() => toast.success('Success')}
                 />
