@@ -4,11 +4,13 @@ import Button from '../../Button/Button';
 //
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ToastContext } from '../../../contexts/ToastProvider';
 
 function Login() {
     const { container, title, boxRememberMe, lostPw } = styles;
     const [isRegister, setIsRegister] = useState(false);
+    const { toast } = useContext(ToastContext);
 
     const formik = useFormik({
         initialValues: {
@@ -78,6 +80,7 @@ function Login() {
                 <Button
                     content={isRegister ? 'LOGIN' : 'LOGIN'}
                     type='submit'
+                    onClick={() => toast.success('Success')}
                 />
             </form>
             <Button
