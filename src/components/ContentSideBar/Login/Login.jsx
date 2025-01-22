@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useContext, useState } from 'react';
 import { ToastContext } from '../../../contexts/ToastProvider';
-import { register } from '../../../apis/authService';
+import { register, signIn } from '../../../apis/authService';
 
 function Login() {
     const { container, title, boxRememberMe, lostPw } = styles;
@@ -37,11 +37,10 @@ function Login() {
 
             if (setIsLoading) return;
 
+            const { email: username, password } = values;
+            setIsLoading(true);
             if (isRegister) {
-                const { email, password } = values;
-                setIsLoading(true);
-
-                await register({ email, password })
+                await register({ username, password })
                     .then((res) => {
                         // console.log(res);
                         toast.success(res.data.message);
@@ -52,6 +51,17 @@ function Login() {
                         toast.error(err.response.data.message);
                         setIsLoading(false);
                     });
+            }
+            if (!isRegister) {
+                await signIn({ username, password })
+                    .then((res) => {
+                        setIsLoading(false);
+                        console.log(res);
+                    })
+                    .catch((err) => {
+                        setIsLoading(false);
+                    });
+                // 20_ 8:02
             }
         }
         //

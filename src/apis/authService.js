@@ -1,8 +1,12 @@
-import axiosClient from './axiosClient';
+import axiosClientAuth from './axiosClientAuth';
 
 const register = async (body) => {
     console.log(body);
-    return await axiosClient.post('/register', body);
+    return await axiosClientAuth.post('/register', body);
 };
 
-export { register };
+const signIn = async (body) => {
+    return await axiosClientAuth.post('/login', body);
+};
+
+export { register, signIn };
