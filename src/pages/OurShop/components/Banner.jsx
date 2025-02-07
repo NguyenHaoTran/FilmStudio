@@ -1,7 +1,10 @@
+import styles from '../styles.module.scss';
+
 function Banner() {
+    const { containerBanner } = styles;
     return (
         <>
-            <div>Banner</div>
+            <div className={containerBanner}></div>
         </>
     );
 }

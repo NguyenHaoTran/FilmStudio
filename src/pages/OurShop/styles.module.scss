@@ -18,3 +18,12 @@
         }
     }
 }
+
+.containerBanner {
+    background-image: url('src/assets/images/banner.jpeg');
+    height: 279px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 45%;
+    margin-top: 10px;
+}
