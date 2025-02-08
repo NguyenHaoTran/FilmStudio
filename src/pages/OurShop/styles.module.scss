@@ -26,4 +26,26 @@
     background-size: cover;
     background-position: 50% 45%;
     margin-top: 10px;
+    .contentBox {
+        @include flex_box_custom(space-between, center, 30px);
+
+        padding: 60px 0;
+        flex-direction: column;
+        .countDownBox {
+            @include flex_box_custom(center, center, 10px);
+        }
+        .countDownBox > span {
+            margin-top: 0px;
+            border: 1px solid #e1e1e1;
+        }
+        .title {
+            font-size: 28px;
+            color: $four-color;
+            font-weight: 400;
+            color: white;
+        }
+        .boxBtn {
+            width: 160px;
+        }
+    }
 }
