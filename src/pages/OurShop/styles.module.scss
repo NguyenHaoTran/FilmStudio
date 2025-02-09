@@ -57,10 +57,23 @@
     .boxLeft {
         @include flex_box_custom(center, center, 20px);
     }
+    .boxRight {
+        @include flex_box_custom(center, center, 20px);
+    }
 
     .boxIcons {
         @include flex_box_custom(center, center, 10px);
     }
-}
+    .selectBox {
+        border: 1px solid #e1e1e1;
+        padding: 5px;
+        color: $secondary-color;
+    }
 
-// 1:40_26
+    .selectBox.sort {
+        width: 275px;
+    }
+    .selectBox.show {
+        width: 83px;
+    }
+}

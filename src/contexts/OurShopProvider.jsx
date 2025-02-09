@@ -18,9 +18,16 @@ export const OurShopProvider = ({ children }) => {
         { label: 'All', value: 'all' }
     ];
 
+    const [sortId, setSortId] = useState('0');
+    const [showId, setShowId] = useState('8');
+    const [isShowGrid, setIsShowGrid] = useState(true);
+
     const values = {
         sortOptions,
-        showOptions
+        showOptions,
+        setSortId,
+        setShowId,
+        setIsShowGrid
     };
 
     return (
