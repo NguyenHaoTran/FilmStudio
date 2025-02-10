@@ -7,6 +7,7 @@ import { OurShopProvider, OurShopContext } from '@contexts/OurShopProvider';
 import { useContext } from 'react';
 import Filter from './components/Filter';
 import ListProducts from './components/ListProducts';
+import MyFooter from '../../components/Footer/Footer';
 
 function OurShop() {
     const { container, functionBox, specialText, btnback } = styles;
@@ -36,11 +37,12 @@ function OurShop() {
                     </div>
                 </div>
                 <Banner />
-                <div>
+                <div style={{ paddingBottom: '30px' }}>
                     <Filter />
                     <ListProducts />
                 </div>
             </MainLayout>
+            <MyFooter />
         </OurShopProvider>
     );
 }
