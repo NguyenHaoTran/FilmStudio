@@ -69,3 +69,28 @@
     color: $thr_color;
     font-weight: 400;
 }
+
+.boxColor {
+    @include flex_box_custom(center, center, 10px);
+    .color {
+        @include flex_box_custom(center, center, 0px);
+        border: 1px solid #e1e1e1;
+        padding: 4px 6px;
+        font-size: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        &:hover {
+            border: 1px solid $primary_color;
+            transition: border 500ms;
+        }
+    }
+}
+
+.text_center {
+    text-align: center;
+}
+
+.boxBtn {
+    margin: 10px auto;
+    width: 142px;
+}

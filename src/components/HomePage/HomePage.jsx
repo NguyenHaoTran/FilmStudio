@@ -16,7 +16,13 @@ function HomePage() {
     const { container } = styles;
 
     useEffect(() => {
-        getProducts().then((res) => {
+        const query = {
+            sortType: 0,
+            page: 1,
+            limit: 10
+        };
+
+        getProducts(query).then((res) => {
             setListProducts(res.contents);
         });
     }, []);

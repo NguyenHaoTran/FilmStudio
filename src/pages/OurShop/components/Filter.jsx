@@ -19,6 +19,7 @@ function Filter() {
 
     const { showOptions, sortOptions, setSortId, setShowId, setIsShowGrid } =
         useContext(OurShopContext);
+
     const getValueSelect = (value, type) => {
         //
         if (type === 'sort') {

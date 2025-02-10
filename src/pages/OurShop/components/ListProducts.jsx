@@ -2,14 +2,16 @@ import MainLayout from '../../../components/Layout/Layout';
 import { useContext } from 'react';
 import { OurShopContext } from '../../../contexts/OurShopProvider';
 import ProductItem from '../../../components/ProductItem/ProductItem';
+import styles from '../styles.module.scss';
 
 function ListProducts() {
     const { products } = useContext(OurShopContext);
+    const { containerProduct } = styles;
 
     return (
         <>
             <MainLayout>
-                <div>
+                <div className={containerProduct}>
                     {products.map((item) => (
                         <ProductItem
                             key={item.id}
@@ -17,6 +19,8 @@ function ListProducts() {
                             prevSrc={item.images[1]}
                             name={item.name}
                             price={item.price}
+                            details={item}
+                            isHomepage={false}
                         />
                     ))}
                 </div>
@@ -26,5 +30,3 @@ function ListProducts() {
 }
 
 export default ListProducts;
-
-// 15:13_ 27
