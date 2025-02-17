@@ -23,6 +23,7 @@ function ProductItem({
 
     const ourShopStore = useContext(OurShopContext);
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
+    const [ColorChoose, setColorChoose] = useState('');
 
     const {
         boxImg,
@@ -35,8 +36,19 @@ function ProductItem({
         color,
         text_center,
         content,
-        containerItem
+        containerItem,
+        isActive,
+        btnClear
     } = styles;
+
+    const handleChooseColor = (color) => {
+        console.log(color);
+        setColorChoose(color);
+    };
+
+    const handleClear = () => {
+        setColorChoose('');
+    };
 
     useEffect(() => {
         if (isHomepage) {
@@ -71,11 +83,23 @@ function ProductItem({
                     <div className={boxColor}>
                         {details.size.map((item, index) => {
                             return (
-                                <div className={color} key={index}>
+                                <div
+                                    className={cls(color, {
+                                        [isActive]: ColorChoose === item.name
+                                    })}
+                                    key={index}
+                                    onClick={() => handleChooseColor(item.name)}
+                                >
                                     {item.name}
                                 </div>
                             );
                         })}
+                    </div>
+                )}
+
+                {ColorChoose && (
+                    <div className={btnClear} onClick={() => handleClear()}>
+                        clear
                     </div>
                 )}
 
