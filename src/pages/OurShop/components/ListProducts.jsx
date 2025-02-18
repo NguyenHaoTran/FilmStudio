@@ -6,7 +6,8 @@ import styles from '../styles.module.scss';
 import Button from '../../../components/Button/Button';
 
 function ListProducts() {
-    const { products, isShowGrid, isLoading } = useContext(OurShopContext);
+    const { products, isShowGrid, isLoading, handleLoadMore, total } =
+        useContext(OurShopContext);
     const { containerProduct } = styles;
 
     return (
@@ -29,9 +30,16 @@ function ListProducts() {
                                 />
                             ))}
                         </div>
-                        <div style={{ width: '180px', margin: '50px auto' }}>
-                            <Button content={'LOAD MORE PRODUCT'} />
-                        </div>
+                        {products.length < total && (
+                            <div
+                                style={{ width: '180px', margin: '50px auto' }}
+                            >
+                                <Button
+                                    content={'LOAD MORE PRODUCT'}
+                                    onClick={handleLoadMore}
+                                />
+                            </div>
+                        )}
                     </>
                 )}
             </MainLayout>
