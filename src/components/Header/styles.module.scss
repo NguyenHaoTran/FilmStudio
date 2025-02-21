@@ -78,3 +78,80 @@
     transform: scale(1);
     opacity: 1;
 }
+
+@media screen and (max-width: 1024px) {
+    .containerHeader {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .containerMenu {
+        display: none; /* Ẩn menu desktop trên mobile */
+    }
+
+    .containerBox {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        height: 60px;
+    }
+
+    .containerHeader {
+        height: 60px;
+        justify-content: space-between;
+    }
+
+    .containerBox {
+        display: none;
+    }
+
+    /* Icon menu mobile */
+    .mobileIcon {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+    }
+
+    /* Mobile menu */
+    .mobileNav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease-in-out;
+        pointer-events: none;
+        gap: 10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .mobileNavOpen {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .mobileNav a {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+        transition: background 0.3s;
+    }
+
+    .mobileNav a:hover {
+        background: #f5f5f5;
+    }
+}

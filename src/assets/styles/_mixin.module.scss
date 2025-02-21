@@ -17,3 +17,32 @@
     background-color: $color;
     @include radius_common($radius);
 }
+
+// responsive
+$breakpoints: (
+    'mobile': 480px,
+    'tablet': 768px,
+    'laptop': 1024px,
+    'desktop': 1200px
+);
+
+// Mixin sử dụng min-width (Desktop First)
+@mixin respond-min($size) {
+    @media screen and (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+// Mixin sử dụng max-width (Mobile First)
+@mixin respond-max($size) {
+    @media screen and (max-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+// Mixin cho responsive từ khoảng A đến B
+@mixin respond-between($min-size, $max-size) {
+    @media screen and (min-width: map-get($breakpoints, $min-size)) and (max-width: map-get($breakpoints, $max-size)) {
+        @content;
+    }
+}

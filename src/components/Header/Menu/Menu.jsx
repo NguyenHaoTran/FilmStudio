@@ -14,6 +14,10 @@ function Menu({ content, href }) {
             setType('login');
         }
 
+        if (content === 'Home') {
+            navigate('home');
+        }
+
         if (content === 'Our Shop') {
             navigate('shop');
         }
