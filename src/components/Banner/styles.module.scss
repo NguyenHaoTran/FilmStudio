@@ -24,6 +24,9 @@
     z-index: 1;
     Button {
         width: 200px;
+        &:hover {
+            background-color: white;
+        }
     }
 }
 
