@@ -9,7 +9,7 @@ import { ToastContext } from '@/contexts/ToastProvider';
 import { register, signIn, getInfo } from '@/apis/authService';
 import Cookies from 'js-cookie';
 import { SideBarContext } from '@/contexts/SideBarProvider';
-// import { StoreContext } from '@/contexts/storeProvider';
+import { StoreContext } from '@/contexts/storeProvider';
 
 function Login() {
     const { container, title, boxRememberMe, lostPw } = styles;
@@ -17,7 +17,9 @@ function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const { toast } = useContext(ToastContext);
     // const { setIsOpen, handleGetListProductsCart } = useContext(SideBarContext);
-    // const { setUserId } = useContext(StoreContext);
+    const { setUserId } = useContext(StoreContext);
+
+    const { setIsOpen } = useContext(SideBarContext);
 
     const formik = useFormik({
         initialValues: {
