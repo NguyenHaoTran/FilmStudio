@@ -12,7 +12,7 @@ export const StoreProvider = ({ children }) => {
     const handleLogOut = () => {
         Cookies.remove('token');
         Cookies.remove('refreshToken');
-        Cookies.remove('useId');
+        Cookies.remove('userId');
         setUserInfo(null);
         window.location.reload();
     };

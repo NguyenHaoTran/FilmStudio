@@ -29,8 +29,8 @@ function Menu({ content, href }) {
     };
 
     const handleRenderText = (content) => {
-        if (content === 'sign in' && !userInfo) {
-            return `Hello: ${userInfo?.username}`;
+        if (content === 'Sign in' && userInfo) {
+            return ` ${userInfo?.username}`;
         } else {
             return content;
         }
@@ -38,7 +38,7 @@ function Menu({ content, href }) {
 
     const handleHover = () => {
         console.log(content);
-        if (content === 'sign in' && userInfo) {
+        if (content === 'Sign in' && userInfo) {
             setIsShowSubMenu(true);
         }
     };
