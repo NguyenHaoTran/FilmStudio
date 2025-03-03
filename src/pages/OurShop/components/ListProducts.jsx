@@ -4,10 +4,17 @@ import { OurShopContext } from '../../../contexts/OurShopProvider';
 import ProductItem from '../../../components/ProductItem/ProductItem';
 import styles from '../styles.module.scss';
 import Button from '../../../components/Button/Button';
+import LoadingTextCommon from '../../../components/LoadingTextCommon/LoadingTextCommon';
 
 function ListProducts() {
-    const { products, isShowGrid, isLoading, handleLoadMore, total } =
-        useContext(OurShopContext);
+    const {
+        products,
+        isShowGrid,
+        isLoading,
+        handleLoadMore,
+        total,
+        isLoadMore
+    } = useContext(OurShopContext);
     const { containerProduct } = styles;
 
     return (
@@ -35,7 +42,13 @@ function ListProducts() {
                                 style={{ width: '180px', margin: '50px auto' }}
                             >
                                 <Button
-                                    content={'LOAD MORE PRODUCT'}
+                                    content={
+                                        isLoadMore ? (
+                                            <LoadingTextCommon />
+                                        ) : (
+                                            'LOAD MORE PRODUCT'
+                                        )
+                                    }
                                     onClick={handleLoadMore}
                                 />
                             </div>
