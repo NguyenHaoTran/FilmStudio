@@ -30,7 +30,8 @@ function ProductItem({
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
     const [ColorChoose, setColorChoose] = useState('');
     const userId = Cookies.get('userId');
-    const { setIsOpen, setType } = useContext(SideBarContext);
+    const { setIsOpen, setType, handleGetListProductsCart } =
+        useContext(SideBarContext);
     const { toast } = useContext(ToastContext);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -90,6 +91,7 @@ function ProductItem({
                 setType('cart');
                 toast.success('Add Product to cart successfully!');
                 setIsLoading(false);
+                handleGetListProductsCart(userId, 'cart');
             })
             .catch((err) => {
                 toast.error('Add Product to cart successfully!');

@@ -13,7 +13,7 @@ function MyHeader() {
     const [isVisible, setIsVisible] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-    const { setIsOpen, setType } = useContext(SideBarContext);
+    const { setIsOpen, setType, listProductCart } = useContext(SideBarContext);
 
     const {
         containerBoxIcon,
@@ -25,7 +25,9 @@ function MyHeader() {
         mobileMenu,
         mobileNav,
         mobileIcon,
-        mobileNavOpen
+        mobileNavOpen,
+        boxCart,
+        quantity
     } = styles;
 
     // Xử lý ẩn/hiện header khi cuộn trang
@@ -123,10 +125,15 @@ function MyHeader() {
                             style={{ fontSize: '24px' }}
                             onClick={() => handleOpenSideBar('wishlist')}
                         />
-                        <CiShoppingCart
-                            style={{ fontSize: '25px' }}
-                            onClick={() => handleOpenSideBar('cart')}
-                        />
+                        <div className={boxCart}>
+                            <CiShoppingCart
+                                style={{ fontSize: '25px' }}
+                                onClick={() => handleOpenSideBar('cart')}
+                            />
+                            <div className={quantity}>
+                                {listProductCart.length}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
