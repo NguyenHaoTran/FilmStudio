@@ -10,7 +10,7 @@
     .content {
         @include flex_box_custom(center, center, 10px);
 
-        background-image: url('src/assets/images/banner4.avif');
+        background-image: url('/banner4.avif');
         color: white;
         flex-direction: column;
         text-align: center;
