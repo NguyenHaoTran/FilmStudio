@@ -1,5 +1,6 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { getCart } from '../apis/cartService';
+import Cookies from 'js-cookie';
 
 export const SideBarContext = createContext();
 
@@ -7,6 +8,7 @@ export const SidebarProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [type, setType] = useState('');
     const [listProductCart, setListProductCart] = useState([]);
+    const userId = Cookies.get('userId');
 
     const handleGetListProductsCart = (userId, type) => {
         if (userId && type === 'cart') {
@@ -19,6 +21,10 @@ export const SidebarProvider = ({ children }) => {
                 });
         }
     };
+
+    useEffect(() => {
+        handleGetListProductsCart(userId, 'cart');
+    });
 
     return (
         <SideBarContext.Provider
@@ -35,3 +41,5 @@ export const SidebarProvider = ({ children }) => {
         </SideBarContext.Provider>
     );
 };
+
+// 4p57
