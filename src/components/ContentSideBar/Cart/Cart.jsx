@@ -6,11 +6,13 @@ import ItemProduct from '../components/ItemProduct/ItemProduct';
 import Button from '../../Button/Button';
 import { useContext } from 'react';
 import { SideBarContext } from '../../../contexts/SideBarProvider';
+import LoadingTextCommon from '../../LoadingTextCommon/LoadingTextCommon';
 
 function Cart() {
-    const { container, btnWL, total } = styles;
+    const { container, btnWL, total, containerLisProductCart, overlayLoading } =
+        styles;
 
-    const { listProductCart } = useContext(SideBarContext);
+    const { listProductCart, isLoading } = useContext(SideBarContext);
 
     return (
         <div className={container}>
@@ -20,19 +22,28 @@ function Cart() {
                     title='CART'
                 />
 
-                {listProductCart.map((item, index) => {
-                    return (
-                        <ItemProduct
-                            key={index}
-                            src={item.images[0]}
-                            nameProduct={item.name}
-                            priceProduct={item.price}
-                            skuProduct={item.sku}
-                            sizeProduct={item.size}
-                            quantity={item.quantity}
-                        />
-                    );
-                })}
+                <div className={containerLisProductCart}>
+                    {listProductCart.map((item, index) => {
+                        return (
+                            <ItemProduct
+                                key={index}
+                                src={item.images[0]}
+                                nameProduct={item.name}
+                                priceProduct={item.price}
+                                skuProduct={item.sku}
+                                sizeProduct={item.size}
+                                quantity={item.quantity}
+                                productId={item.productId}
+                                userId={item.userId}
+                            />
+                        );
+                    })}
+                    {/* {isLoading && (
+                        <div className={overlayLoading}>
+                            <LoadingTextCommon />
+                        </div>
+                    )} */}
+                </div>
             </div>
             <div>
                 <div className={total}>
@@ -49,3 +60,5 @@ function Cart() {
 }
 
 export default Cart;
+
+// video 33_done

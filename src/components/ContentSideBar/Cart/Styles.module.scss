@@ -21,4 +21,17 @@
             }
         }
     }
+
+    .containerLisProductCart {
+        position: relative;
+        .overlayLoading {
+            @include flex_box_custom(center, center, 0px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #ffffff, $alpha: 0.5);
+        }
+    }
 }
