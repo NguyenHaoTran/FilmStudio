@@ -13,8 +13,8 @@ function App() {
         <StoreProvider>
             <ToastProvider>
                 <SidebarProvider>
-                    <Sidebar />
                     <BrowserRouter>
+                        <Sidebar />
                         <Suspense
                             fallback={<div className='loading'>Loading...</div>}
                         >
