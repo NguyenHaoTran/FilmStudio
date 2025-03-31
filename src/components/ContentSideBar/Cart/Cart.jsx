@@ -34,6 +34,10 @@ function Cart() {
         setIsOpen(false);
     };
 
+    const subTotal = listProductCart.reduce((acc, item) => {
+        return acc + item.total;
+    }, 0);
+
     return (
         <div
             className={cls(container, {
@@ -73,7 +77,7 @@ function Cart() {
                     <div>
                         <div className={total}>
                             <div>SUBTOTAL:</div>
-                            <div>S$199.9</div>
+                            <div>$ {subTotal}</div>
                         </div>
                         <div className={btnWL}>
                             <Button content={'VIEW CART'} />
