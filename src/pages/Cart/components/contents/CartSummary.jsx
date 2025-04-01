@@ -45,7 +45,6 @@ const CartSummary = () => {
 
                 {isLoading && <LoadingCart />}
             </div>
-
             <PaymentMethods />
         </div>
     );

@@ -1,38 +1,8 @@
 import styles from '../../styles.module.scss';
 import SelectBox from '../../../OurShop/components/SelectBox';
 
-const CartTable = () => {
+const CartTable = ({ listProductCart }) => {
     const { cartTable } = styles;
-
-    const cartItem = [
-        {
-            id: 1,
-            name: 'Amet faucibus nunc',
-            price: 187.99,
-            sku: 87654,
-            size: 'M',
-            quantity: 1,
-            img: 'https://via.placeholder.com/100'
-        },
-        {
-            id: 1,
-            name: 'Amet faucibus nunc',
-            price: 187.99,
-            sku: 87654,
-            size: 'M',
-            quantity: 1,
-            img: 'https://via.placeholder.com/100'
-        },
-        {
-            id: 1,
-            name: 'Amet faucibus nunc',
-            price: 187.99,
-            sku: 87654,
-            size: 'M',
-            quantity: 1,
-            img: 'https://via.placeholder.com/100'
-        }
-    ];
 
     const handleQuantityChange = (id, newQuantity) => {
         console.log('Update item:', id, 'to quantity:', newQuantity);
