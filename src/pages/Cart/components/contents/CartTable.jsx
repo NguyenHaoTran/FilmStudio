@@ -1,7 +1,7 @@
 import styles from '../../styles.module.scss';
 import SelectBox from '../../../OurShop/components/SelectBox';
 
-const CartTable = ({ listProductCart }) => {
+const CartTable = ({ listProductCart, getData }) => {
     const { cartTable } = styles;
 
     const handleQuantityChange = (id, newQuantity) => {
