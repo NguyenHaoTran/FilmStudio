@@ -43,7 +43,7 @@ const CartSummary = () => {
                 <div className={space} />
                 <Button content={'CONTINUE SHOPPING'} isPriamry={false} />
 
-                {/* {isLoading && <LoadingCart />} */}
+                {isLoading && <LoadingCart />}
             </div>
             <PaymentMethods />
         </div>

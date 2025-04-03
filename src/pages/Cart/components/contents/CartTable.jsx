@@ -1,12 +1,9 @@
 import styles from '../../styles.module.scss';
 import SelectBox from '../../../OurShop/components/SelectBox';
+import LoadingCart from '@/pages/Cart/components/Loading';
 
-const CartTable = ({ listProductCart, getData }) => {
+const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
     const { cartTable } = styles;
-
-    const handleQuantityChange = (id, newQuantity) => {
-        console.log('Update item:', id, 'to quantity:', newQuantity);
-    };
 
     const showOptions = [
         { label: '1', value: '1' },
@@ -28,10 +25,6 @@ const CartTable = ({ listProductCart, getData }) => {
         };
 
         getData(data);
-    };
-
-    const handleDelete = (id) => {
-        console.log('Delete item width id:', id);
     };
 
     return (
@@ -94,6 +87,7 @@ const CartTable = ({ listProductCart, getData }) => {
                     ))}
                 </tbody>
             </table>
+            {isLoading && <LoadingCart />}
         </div>
     );
 };

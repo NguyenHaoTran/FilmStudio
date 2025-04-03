@@ -26,22 +26,29 @@ export const SidebarProvider = ({ children }) => {
         }
     };
 
+    // useEffect(() => {
+    //     handleGetListProductsCart(userId, 'cart');
+    // });
+
     useEffect(() => {
+        if (!userId) return;
         handleGetListProductsCart(userId, 'cart');
-    });
+    }, [userId]);
+
+    const value = {
+        isOpen,
+        setIsOpen,
+        type,
+        setType,
+        handleGetListProductsCart,
+        listProductCart,
+        isLoading,
+        setListProductCart,
+        setIsLoading
+    };
 
     return (
-        <SideBarContext.Provider
-            value={{
-                isOpen,
-                setIsOpen,
-                type,
-                setType,
-                handleGetListProductsCart,
-                listProductCart,
-                isLoading
-            }}
-        >
+        <SideBarContext.Provider value={value}>
             {children}
         </SideBarContext.Provider>
     );

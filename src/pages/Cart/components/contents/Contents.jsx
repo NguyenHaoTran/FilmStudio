@@ -1,51 +1,147 @@
+import CartTable from '@/pages/Cart/components/contents/CartTable';
 import styles from '../../styles.module.scss';
-import CartSummary from './CartSummary';
-import CartTable from './CartTable';
-import Button from '../../../../components/Button/Button';
+import CartSummary from '@/pages/Cart/components/contents/CartSummary';
+import Button from '@components/Button/Button';
 import { useContext } from 'react';
-import { SideBarContext } from '../../../../contexts/SideBarProvider';
-import { addProductToCart } from '@/apis/cartService';
+import { SideBarContext } from '@/contexts/SideBarProvider';
+import { addProductToCart, deleteItem, deleteCart } from '@/apis/cartService';
+import { PiShoppingCartLight } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getCart } from '@/apis/cartService';
 
 function Contents() {
-    const { containerContents, boxFooter, boxCoupon, boxBtnDelete } = styles;
-    const { listProductCart, handleGetListProductsCart } =
-        useContext(SideBarContext);
+    const {
+        containerContents,
+        boxFooter,
+        boxBtnDelete,
+        boxCoupon,
+        boxEmptyCart,
+        titleEmpty,
+        boxBtnEmpty
+    } = styles;
+    const {
+        listProductCart,
+        handleGetListProductsCart,
+        isLoading,
+        setIsLoading,
+        userId,
+        setListProductCart
+    } = useContext(SideBarContext);
+    const navigate = useNavigate();
 
     const handleReplaceQuantity = (data) => {
+        setIsLoading(true);
         addProductToCart(data)
             .then((res) => {
-                console.log(res);
                 handleGetListProductsCart(data.userId, 'cart');
             })
             .catch((err) => {
-                console.error(err);
+                setIsLoading(false);
+                console.log(err);
             });
     };
 
+    const handleDeleteItemCart = (data) => {
+        setIsLoading(true);
+        deleteItem(data)
+            .then((res) => {
+                handleGetListProductsCart(data.userId, 'cart');
+            })
+            .catch((err) => {
+                setIsLoading(false);
+                console.log(err);
+            });
+    };
+
+    const handleDeleteCart = () => {
+        setIsLoading(true);
+        deleteCart({ userId })
+            .then((res) => {
+                handleGetListProductsCart(userId, 'cart');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const handleNavigateToShop = () => {
+        navigate('/shop');
+    };
+
+    useEffect(() => {
+        if (!userId) return;
+        setIsLoading(true);
+        getCart(userId)
+            .then((res) => {
+                setListProductCart(res.data.data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                setListProductCart([]);
+                setIsLoading(false);
+            });
+    }, []);
+
     return (
-        <div className={containerContents}>
-            <div>
-                <CartTable
-                    listProductCart={listProductCart}
-                    getData={handleReplaceQuantity}
-                />
-                <div className={boxFooter}>
-                    <div className={boxCoupon}>
-                        <input type='text' />
-                        <Button content={'OK'} isPrimary={false} />
+        <>
+            {listProductCart.length > 0 ? (
+                <div className={containerContents}>
+                    <div
+                        style={{
+                            width: '58%'
+                        }}
+                    >
+                        <CartTable
+                            listProductCart={listProductCart}
+                            getData={handleReplaceQuantity}
+                            isLoading={isLoading}
+                            getDataDelete={handleDeleteItemCart}
+                        />
+
+                        <div className={boxFooter}>
+                            <div className={boxCoupon}>
+                                <input type='text' placeholder='Coupon code' />
+                                <Button content={'OK'} isPriamry={false} />
+                            </div>
+
+                            <div className={boxBtnDelete}>
+                                <Button
+                                    content={
+                                        <div>&#128465; CLEAR SHOPPING CART</div>
+                                    }
+                                    isPriamry={false}
+                                    onClick={handleDeleteCart}
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className={boxBtnDelete}>
+
+                    <CartSummary />
+                </div>
+            ) : (
+                <div className={boxEmptyCart}>
+                    <PiShoppingCartLight
+                        style={{
+                            fontSize: '50px'
+                        }}
+                    />
+                    <div className={titleEmpty}>
+                        YOUR SHOPPING CART IS EMPTY
+                    </div>
+                    <div>
+                        We invite you to get acquainted with an assortment of
+                        our shop. Surely you can find something for yourself!
+                    </div>
+                    <div className={boxBtnEmpty}>
                         <Button
-                            content={<div>&#128465; CLEAR SHOPPING CART</div>}
-                            isPrimary={false}
+                            content={'RETURN TO SHOP'}
+                            onClick={handleNavigateToShop}
                         />
                     </div>
                 </div>
-            </div>
-            <div>
-                <CartSummary />
-            </div>
-        </div>
+            )}
+        </>
     );
 }
 
