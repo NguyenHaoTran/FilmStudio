@@ -20,7 +20,7 @@ function Menu({ content, href }) {
         }
 
         if (content === 'Home') {
-            navigate('home');
+            navigate('/');
         }
 
         if (content === 'Our Shop') {

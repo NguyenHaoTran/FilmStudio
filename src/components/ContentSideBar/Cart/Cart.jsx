@@ -89,7 +89,7 @@ function Cart() {
                                 content={'VIEW CART'}
                                 onClick={handleNavigateToCart}
                             />
-                            <Button content={'CHECKOUT'} isPrimary={false} />
+                            {/* <Button content={'CHECKOUT'} isPrimary={false} /> */}
                         </div>
                     </div>
                 </div>
