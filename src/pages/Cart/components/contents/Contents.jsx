@@ -85,7 +85,7 @@ function Contents() {
 
     return (
         <>
-            {listProductCart.length > 0 ? (
+            {listProductCart.length > 0 && userId ? (
                 <div className={containerContents}>
                     <div
                         style={{
